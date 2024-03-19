@@ -211,11 +211,13 @@ public class WriteFile extends DataConstants
         {
             courseWriter.write(courseArray.toJSONString());
             courseWriter.flush();
+            return true;
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
+        return false;
     }
     
 

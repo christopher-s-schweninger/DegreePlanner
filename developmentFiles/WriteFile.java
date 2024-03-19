@@ -75,7 +75,7 @@ public class WriteFile extends DataConstants
 		{
 			e.printStackTrace();
 		}
-        return false;
+        return null;
     }
 
     public static JSONObject writeFaculty(User user, JSONObject jsonObject)
@@ -133,7 +133,7 @@ public class WriteFile extends DataConstants
     public static boolean writeCourse()
     {
         JSONObject jsonObject;        
-        // do we need to make this a specific size?
+        // do we need to make this a specific size?  // no
         JSONArray courseArray = new JSONArray();
         CourseList courseList = CourseList.getInstance();
         ArrayList<Course> coursesIn = courseList.getCourses();
@@ -169,10 +169,7 @@ public class WriteFile extends DataConstants
                 }
                 jsonPrereqArray.add(jsonPrereq.toJSONString());
             }
-
             jsonObject.put(COURSE_PREREQ, jsonPrereqArray.toJSONString());
-
-
             JSONObject jsonCoreq = new JSONObject();
             JSONArray jsonCoreqArray = new JSONArray();
             for(HashMap<UUID, String> coreq : course.courseCoreqUUID)

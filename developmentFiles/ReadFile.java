@@ -7,8 +7,19 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+/**
+ * This reads in the following files = course.json, degree.json, student.json, faculty.json, advisement_plan.json
+ * The methods need to be executed in the following order readCourses(), readUsers(), readDegreePlan(), readAdvisementPlan()
+ * The reason for method order is later methods depend on earlier methods being executed first.
+ * @author Christopher Schweninger
+ */
 public class ReadFile extends DataConstants 
 {
+
+	/**
+	 * This will execute both readStudents() and readFaculty();
+	 * @return The list of all users
+	 */
 	public static ArrayList<User> readUsers()  // Second & Third
 	{
 		ArrayList<User> allUsers = new ArrayList<User>();
@@ -24,6 +35,10 @@ public class ReadFile extends DataConstants
 		}
 		return allUsers;
 	}
+	/**
+	 * This reads in all students in student.json
+	 * @return The list of all students
+	 */
     public static ArrayList<User> readStudents()  // Second
 	{
 		ArrayList<User> students = new ArrayList<User>();
@@ -84,7 +99,7 @@ public class ReadFile extends DataConstants
 		
 		return null;
 	}
-
+	
 	public static ArrayList<DegreePlan> readDegreePlan()
 	{
 		ArrayList<DegreePlan> degrees = new ArrayList<DegreePlan>();

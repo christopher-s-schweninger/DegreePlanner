@@ -130,14 +130,13 @@ public class WriteFile extends DataConstants
         return null;
     }
 
-    public static boolean writeCourse(CourseList courseList)
+    public static boolean writeCourse()
     {
-        JSONObject jsonObject;
-        FileWriter courseWriter = new FileWriter(COURSE_FILE_NAME);
-        
+        JSONObject jsonObject;        
         // do we need to make this a specific size?
         JSONArray courseArray = new JSONArray();
-        ArrayList coursesIn = courseList.getCourses();
+        CourseList courseList = CourseList.getInstance();
+        ArrayList<Course> coursesIn = courseList.getCourses();
         
         for(Course course : coursesIn)
         {
@@ -146,20 +145,27 @@ public class WriteFile extends DataConstants
             jsonObject.put(COURSEID, course.getCourseID());
             jsonObject.put(COURSE_NAME, course.getCourseName());
             jsonObject.put(COURSE_DESCRIPTION, course.getCourseDescription());
-
             JSONObject jsonPrereq = new JSONObject();
             JSONArray jsonPrereqArray = new JSONArray();
             for(HashMap<UUID, String> prereq : course.coursePrereqUUID)
             {
-                boolean orFlag = false;
+                int i = 1;
+                boolean orFlag = true;
                 for(HashMap.Entry<UUID, String> prereqEntry : prereq.entrySet())
                 {
-                    jsonPrereq.put(prereqEntry.getKey(), prereqEntry.getValue());
-                    if(orFlag == true)
+                    jsonPrereq.put(COURSE_UUID, prereqEntry.getKey());
+                    jsonPrereq.put(GRADE, prereqEntry.getValue());
+                    if(i != prereq.size())
                     {
-                        jsonPrereq.put(ORNEXT);
+                        orFlag = true;
                     }
-                    orFlag = true;
+                    else
+                    {
+                        orFlag = false;
+                    }
+                    jsonPrereq.put(ORNEXT, orFlag);
+
+                    i++;
                 }
                 jsonPrereqArray.add(jsonPrereq.toJSONString());
             }
@@ -171,38 +177,45 @@ public class WriteFile extends DataConstants
             JSONArray jsonCoreqArray = new JSONArray();
             for(HashMap<UUID, String> coreq : course.courseCoreqUUID)
             {
+                int i = 1;
                 boolean orFlag = false;
                 for(HashMap.Entry<UUID, String> coreqEntry : coreq.entrySet())
                 {
-                    jsonCoreq.put(coreqEntry.getKey(), coreqEntry.getValue());
-                    if(orFlag == true)
+                    jsonCoreq.put(COURSE_UUID, coreqEntry.getKey());
+                    jsonCoreq.put(GRADE, coreqEntry.getValue());
+                    if(i != coreq.size())
                     {
-                        jsonCoreq.put(ORNEXT);
+                        orFlag = true;
                     }
-                    orFlag = true;
+                    else
+                    {
+                        orFlag = false;
+                    }
+                    jsonCoreq.put(ORNEXT, orFlag);
+                    i++;
                 }
                 jsonCoreqArray.add(jsonCoreq.toJSONString());
             }
-
             jsonObject.put(COURSE_COREQ, jsonCoreqArray.toJSONString());
-            jsonObject.put(COURSE_HOURS, course.getCourseHours());
-            jsonObject.put(REQUIRED_GRADE, course.getReguiredGrade());
-            
-            JSONObject semProvided = new JSONObject();
+            jsonObject.put(COURSE_HOURS, course.getCourseHours());            
             JSONArray semProvidedArray = new JSONArray();
             ArrayList<String> semProv = course.getSemestersProvided();
             for(String semester : semProv)
             {
-                semProvided.put(semester);
+                semProvidedArray.add(semester);
             }
-            semProvidedArray.add(semProvided.toJSONString());
-            
             jsonObject.put(SEMESTER_PROVIDED, semProvidedArray.toJSONString());
-
-            
-
+            courseArray.add(jsonObject);
         }
-        courseWriter.write(courseArray.toJSONString());
+        try (FileWriter courseWriter = new FileWriter("jsonFiles/tempcourse.json"))
+        {
+            courseWriter.write(courseArray.toJSONString());
+            courseWriter.flush();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
     
 

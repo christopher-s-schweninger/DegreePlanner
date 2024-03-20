@@ -116,6 +116,16 @@ public abstract class User
         return this.userUUID;
     }
 
+    public String getUserEmail() 
+    {
+        return this.userEmail;
+    }
+
+    public UserType getUserType()
+    {
+        return this.userType;
+    }
+
     /**
      * clears necessary fields associated w/ the user object
      * @param user

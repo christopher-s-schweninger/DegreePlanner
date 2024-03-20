@@ -126,6 +126,21 @@ public abstract class User
         return this.userType;
     }
 
+    public String getUserFirstName()
+    {
+        return this.firstName;
+    }
+
+    public String getUserLastName()
+    {
+        return this.lastName;
+    }
+
+    public String getUserFullName()
+    {
+        return this.firstName + " " + this.lastName;
+    }
+
     /**
      * clears necessary fields associated w/ the user object
      * @param user

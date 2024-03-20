@@ -11,11 +11,10 @@ import org.json.simple.parser.JSONParser;
 public class WriteFile extends DataConstants 
 {
     //Need to update, not in video as of 3/15 due to loss of member (Benjamin King)
-    public static boolean writeUser(UserList userList)  // Second & Third
+    public static boolean writeUsers()  // Second & Third
 	{
-        JSONObject jsonObject;
-        FileWriter studentWriter = new FileWriter(STUDENT_FILE_NAME);
-        FileWriter facFileWriter = new FileWriter(FACULTY_FILE_NAME);
+        UserList userList = UserList.getInstance();
+        JSONObject jsonObject = new JSONObject();
         // do we need to make this a specific size?
         JSONArray usersArray = new JSONArray();
         HashMap<UUID, User> userEntry = userList.getUserList();
@@ -25,15 +24,22 @@ public class WriteFile extends DataConstants
 
             if(userMap.getValue().getUserType().toString() == "STUDENT")
             {
-                usersArray.add(writeStudent(userMap.getValue(), jsonObject));
+                usersArray.add(writeStudent(userMap.getValue()));
                 continue;
             }
             return false;
             //usersArray.add(usersArray.toJSONString);
         }
-        studentWriter.write(usersArray.toJSONString);
-        studentWriter.close();
-        usersArray = null;
+        try (FileWriter studentWriter = new FileWriter(STUDENT_FILE_NAME))
+        {
+            studentWriter.write(usersArray.toJSONString());
+            studentWriter.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        usersArray.clear();
         for(HashMap.Entry<UUID, User> userMap : userEntry.entrySet())
         {
             if(userMap.getValue().getUserType().toString() == "PROFESSOR" || userMap.getValue().getUserType().toString() == "ADVISOR")
@@ -43,39 +49,37 @@ public class WriteFile extends DataConstants
             }
             return false;
         }
-        facFileWriter.write(usersArray.toJSONString);
-        facFileWriter.close();
-        
+        try (FileWriter facFileWriter = new FileWriter(FACULTY_FILE_NAME))
+        {
+            facFileWriter.write(usersArray.toJSONString());
+            facFileWriter.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
         return true;
     }
 
-    public static JSONObject writeStudent(User user, JSONObject jsonObject)  // Second
+    public static JSONObject writeStudent(User user)  // Second
 	{
-        try
+        JSONObject jsonObject = new JSONObject();
+        if(user == null)
         {
-            if(user == null)
-            {
-                return null;
-            }
-            //FileWriter file = new FileWriter(STUDENT_FILE_NAME);
-
-            jsonObject.put(USER_UUID, user.getUUID());
-            jsonObject.put(USER_ID, user.getUserID());
-            jsonObject.put(FIRSTNAME, user.firstName);
-            jsonObject.put(LASTNAME, user.lastName);
-            jsonObject.put(USER_EMAIL, user.getUserEmail());
-            jsonObject.put(USER_PASSWORD, user.getUserPass());
-            jsonObject.put(USER_TYPE, user.getUserType());
-            //jsonObject.put(DEGREE_PLAN, user.writeDegreePlan(user.))
-            //file.write(jsonObject.toJSONString());
-            //file.close();
-            return jsonObject;
+            return null;
         }
-        catch (Exception e)  // If something goes wrong throws this error
-		{
-			e.printStackTrace();
-		}
-        return null;
+        //FileWriter file = new FileWriter(STUDENT_FILE_NAME);
+        jsonObject.put(USER_UUID, user.getUUID());
+        jsonObject.put(USER_ID, user.getUserID());
+        jsonObject.put(FIRSTNAME, user.getUserFirstName());
+        jsonObject.put(LASTNAME, user.getUserLastName());
+        jsonObject.put(USER_EMAIL, user.getUserEmail());
+        jsonObject.put(USER_PASSWORD, user.getUserPass());
+        jsonObject.put(USER_TYPE, user.getUserType());
+        //jsonObject.put(DEGREE_PLAN, user.writeDegreePlan(user.))
+        //file.write(jsonObject.toJSONString());
+        //file.close();
+        return jsonObject;
     }
 
     public static JSONObject writeFaculty(User user, JSONObject jsonObject)
@@ -93,11 +97,18 @@ public class WriteFile extends DataConstants
                 // should I be calling toString on all of these user attributes?
                 jsonObject.put(USER_UUID, user.getUUID());
                 jsonObject.put(USER_ID, user.getUserID());
-                jsonObject.put(FIRSTNAME, user.firstName);
-                jsonObject.put(LASTNAME, user.lastName);
+                jsonObject.put(FIRSTNAME, user.getUserFirstName());
+                jsonObject.put(LASTNAME, user.getUserLastName());
                 jsonObject.put(USER_EMAIL, user.getUserEmail());
                 jsonObject.put(USER_PASSWORD, user.getUserPass());
                 jsonObject.put(USER_TYPE, user.getUserType());
+                ArrayList<Course> temp = ((Faculty)user).getCoursesInstructing();
+                JSONArray jsonArray = new JSONArray();
+                for(Course course : temp)
+                {
+                    jsonArray.add(course.getCourseUUID());
+                }
+                jsonObject.put(COURSES_INSTRUCTING, jsonArray);
                 // again not sure how to access coursesInstructing through user object
                 //jsoneObject.put(COURSES_INSTRUCTING, Faculty.coursesInstructing);
                 //file.write(jsonObject.toJSONString());
@@ -109,12 +120,18 @@ public class WriteFile extends DataConstants
                 
                 jsonObject.put(USER_UUID, user.getUUID());
                 jsonObject.put(USER_ID, user.getUserID());
-                jsonObject.put(FIRSTNAME, user.firstName);
-                jsonObject.put(LASTNAME, user.lastName);
+                jsonObject.put(FIRSTNAME, user.getUserFirstName());
+                jsonObject.put(LASTNAME, user.getUserLastName());
                 jsonObject.put(USER_EMAIL, user.getUserEmail());
                 jsonObject.put(USER_PASSWORD, user.getUserPass());
                 jsonObject.put(USER_TYPE, user.getUserType());
-                
+                ArrayList<User> temp = ((Faculty)user).getAdvisingStudents();
+                JSONArray jsonArray = new JSONArray();
+                for(User student : temp)
+                {
+                    jsonArray.add(student.getUUID());
+                }
+                jsonObject.put(ADVISING_STUDENTS, jsonArray);
                 // not sure how to access a faculty attribute through a faculty user. should i make a user = new Faculty() 
                 // at the top of the if statement?
                 //jsoneObject.put(ADVISING_STUDENTS, Faculty.advisingStudents);

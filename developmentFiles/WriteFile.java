@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import testClasses.CourseList;
+import testClasses.User;
 import testClasses.UserList;
 
 public class WriteFile extends DataConstants 

@@ -9,6 +9,7 @@ import org.json.simple.parser.JSONParser;
 
 import testClasses.CourseList;
 import testClasses.Student;
+import testClasses.User;
 
 /**
  * This reads in the following files = course.json, degree.json, student.json, faculty.json, advisement_plan.json

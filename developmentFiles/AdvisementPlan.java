@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.UUID;
 
+import testClasses.User;
+
 public class AdvisementPlan
 {
     private UUID AdvisementPlanUUID;

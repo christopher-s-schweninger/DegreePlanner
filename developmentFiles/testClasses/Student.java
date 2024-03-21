@@ -9,8 +9,6 @@ import DegreeList;
 import DegreePlan;
 import Elective;
 import Major;
-import User;
-import UserType;
 import Warnings;
 
 public class Student extends User

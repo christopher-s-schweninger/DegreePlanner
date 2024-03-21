@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import testClasses.CourseList;
 import testClasses.Student;
+import testClasses.User;
 import testClasses.UserList;
 
 public class HomeFacade {

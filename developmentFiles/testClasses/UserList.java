@@ -5,8 +5,6 @@ import java.util.UUID;
 
 import Faculty;
 import ReadFile;
-import User;
-import UserType;
 
 public class UserList
 {

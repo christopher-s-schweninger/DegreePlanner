@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import testClasses.Student;
+import testClasses.User;
 import testClasses.UserList;
 
 public class Faculty extends User

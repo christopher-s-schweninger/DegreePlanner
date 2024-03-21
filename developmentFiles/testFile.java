@@ -2,6 +2,9 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
+
+import testClasses.User;
+
 import java.util.Random;
 
 public class testFile {

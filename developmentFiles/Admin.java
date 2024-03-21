@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import testClasses.User;
+
 public class Admin extends Faculty
 {
     public boolean editCourseDetails(String courseID) //should this be courseUUID?

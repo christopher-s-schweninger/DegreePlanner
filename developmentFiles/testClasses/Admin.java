@@ -1,7 +1,6 @@
+package testClasses;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import testClasses.User;
 
 public class Admin extends Faculty
 {

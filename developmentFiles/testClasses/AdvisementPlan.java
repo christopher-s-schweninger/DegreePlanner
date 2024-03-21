@@ -1,7 +1,6 @@
+package testClasses;
 import java.util.ArrayList;
 import java.util.UUID;
-
-import testClasses.User;
 
 public class AdvisementPlan
 {

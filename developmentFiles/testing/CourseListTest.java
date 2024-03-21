@@ -1,4 +1,5 @@
 package testing;
+import testClasses.CourseList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,6 +25,7 @@ class CourseListTest {
 
     @Test
     public void testNullCourses(){
+        
         assertEquals("1", "");
     }
     

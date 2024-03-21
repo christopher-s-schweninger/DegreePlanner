@@ -1,4 +1,5 @@
 package testing;
+import testClasses.Course;
 import testClasses.CourseList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,9 +25,17 @@ class CourseListTest {
     public void tearDown(){}
 
     @Test
-    public void testNullCourses(){
-        
-        assertEquals("1", "");
+    public void testNullInstance(){
+        CourseList nullInstance = CourseList.getInstance();
+        assertEquals(nullInstance, null);
     }
+
+    @Test
+    public void testNullCourse(){
+        Course nullCourse = CourseList.getCourse(null);
+        assertEquals(nullCourse, null);
+    }
+
+
     
 }

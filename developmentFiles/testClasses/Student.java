@@ -1,6 +1,17 @@
+package testClasses;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
+
+import AdvisementPlan;
+import Course;
+import DegreeList;
+import DegreePlan;
+import Elective;
+import Major;
+import User;
+import UserType;
+import Warnings;
 
 public class Student extends User
 {

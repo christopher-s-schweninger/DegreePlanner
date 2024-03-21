@@ -8,6 +8,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import testClasses.CourseList;
+import testClasses.UserList;
+
 public class WriteFile extends DataConstants 
 {
     //Need to update, not in video as of 3/15 due to loss of member (Benjamin King)

@@ -1,7 +1,13 @@
+package testClasses;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+
+import Course;
+import ReadFile;
+import UserType;
+
 import java.util.HashMap;
 
 public class CourseList

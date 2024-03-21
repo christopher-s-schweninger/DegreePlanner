@@ -7,6 +7,9 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import testClasses.CourseList;
+import testClasses.Student;
+
 /**
  * This reads in the following files = course.json, degree.json, student.json, faculty.json, advisement_plan.json
  * The methods need to be executed in the following order readCourses(), readUsers(), readDegreePlan(), readAdvisementPlan()

@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
+import testClasses.Student;
+import testClasses.UserList;
+
 public class Faculty extends User
 {
 

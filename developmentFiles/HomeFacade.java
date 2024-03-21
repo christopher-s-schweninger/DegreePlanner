@@ -2,6 +2,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
+import testClasses.CourseList;
+import testClasses.Student;
+import testClasses.UserList;
+
 public class HomeFacade {
     public User user;
     public int count;

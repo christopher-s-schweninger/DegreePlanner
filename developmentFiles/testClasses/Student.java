@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import AdvisementPlan;
-import Course;
 import DegreeList;
 import DegreePlan;
 import Elective;

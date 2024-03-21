@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import testClasses.Course;
+
 public class Elective {
     public String type;
     public int credits;

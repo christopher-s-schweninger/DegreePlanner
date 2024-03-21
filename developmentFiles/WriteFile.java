@@ -8,6 +8,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import testClasses.Course;
 import testClasses.CourseList;
 import testClasses.User;
 import testClasses.UserList;

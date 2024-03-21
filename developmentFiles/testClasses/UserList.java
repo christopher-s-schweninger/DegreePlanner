@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import Faculty;
-import ReadFile;
 
 public class UserList
 {

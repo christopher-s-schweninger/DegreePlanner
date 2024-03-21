@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import testClasses.User;
+import testClasses.UserType;
 /**
  * @author Benjamin King
  * This class is to write output to the console for the user and read user

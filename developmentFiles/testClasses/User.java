@@ -2,9 +2,7 @@ package testClasses;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import Course;
 import Tab;
-import UserType;
 
 public abstract class User 
 {

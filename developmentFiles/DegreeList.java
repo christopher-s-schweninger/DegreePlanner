@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import testClasses.ReadFile;
+
 public class DegreeList 
 {
     private static DegreeList degreeList;

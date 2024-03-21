@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import testClasses.Course;
+
 public class Semester {
     public int semesterNum;
     public ArrayList<ArrayList<Course>> semesterCourses;

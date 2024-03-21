@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import testClasses.Course;
+
 public class ApplicationArea {
     public String ApplicationAreaName;
     public ArrayList<Course> choices;

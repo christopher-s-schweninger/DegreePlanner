@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
+import testClasses.Course;
+import testClasses.ReadFile;
 import testClasses.User;
 
 import java.util.Random;

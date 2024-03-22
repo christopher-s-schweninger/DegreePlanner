@@ -3,12 +3,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
-import AdvisementPlan;
-import DegreeList;
-import DegreePlan;
-import Elective;
-import Major;
-import Warnings;
+import testClasses.AdvisementPlan;
+import testClasses.DegreeList;
+import testClasses.DegreePlan;
+import testClasses.Elective;
+import testClasses.Major;
+import testClasses.Warnings;
 
 public class Student extends User
 {

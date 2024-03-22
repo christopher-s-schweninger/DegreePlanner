@@ -8,7 +8,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import DataConstants;
+import testClasses.DataConstants;
 
 /**
  * This reads in the following files = course.json, degree.json, student.json, faculty.json, advisement_plan.json

@@ -1,5 +1,9 @@
+package testClasses;
 import java.util.ArrayList;
 import java.util.UUID;
+
+import testClasses.Course;
+import testClasses.User;
 
 public class AdvisementPlan
 {

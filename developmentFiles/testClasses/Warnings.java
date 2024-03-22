@@ -1,3 +1,4 @@
+package testClasses;
 public enum Warnings {
     FAILING_CLASS,
     RETAKING_CLASS,

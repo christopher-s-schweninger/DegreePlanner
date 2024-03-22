@@ -1,5 +1,10 @@
+package testClasses;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import testClasses.Course;
+import testClasses.User;
+import testClasses.UserType;
 
 public class Admin extends Faculty
 {

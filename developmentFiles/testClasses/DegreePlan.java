@@ -1,6 +1,9 @@
+package testClasses;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
+
+import testClasses.Course;
 
 public class DegreePlan 
 { 

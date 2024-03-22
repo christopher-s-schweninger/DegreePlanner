@@ -1,3 +1,4 @@
+package testClasses;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,8 +8,8 @@ import java.util.HashMap;
 public class CourseList
 {
     private static CourseList courseList;
-    private HashMap<UUID, Course> courses; // courseUUID, course
-    private HashMap<String, UUID> courseNames; //courseID, courseUUID
+    private static HashMap<UUID, Course> courses; // courseUUID, course
+    private static HashMap<String, UUID> courseNames; //courseID, courseUUID
 
     private CourseList()
     {
@@ -25,7 +26,6 @@ public class CourseList
         
     }
 
-
     public static CourseList getInstance()
     {
         if(courseList == null)
@@ -41,7 +41,7 @@ public class CourseList
      * @param courseID
      * @return
      */
-    public Course getCourse(String courseID)
+    public static Course getCourse(String courseID)
     {
         UUID courseUUID = courseNames.get(courseID);
 

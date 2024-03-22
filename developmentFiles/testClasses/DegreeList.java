@@ -1,4 +1,7 @@
+package testClasses;
 import java.util.ArrayList;
+
+import testClasses.ReadFile;
 
 public class DegreeList 
 {

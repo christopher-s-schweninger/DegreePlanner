@@ -1,4 +1,7 @@
+package testClasses;
 import java.util.ArrayList;
+
+import testClasses.Course;
 
 public class DraftSlate {
     public ArrayList<Course> userSelectedCourses;

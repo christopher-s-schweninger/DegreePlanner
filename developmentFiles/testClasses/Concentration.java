@@ -1,3 +1,4 @@
+package testClasses;
 public enum Concentration {
     Bioinformatics_or_Computational_Biology,
     Cloud_Native_Application_Development,

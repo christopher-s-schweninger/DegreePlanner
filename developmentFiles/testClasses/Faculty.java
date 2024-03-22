@@ -1,6 +1,13 @@
+package testClasses;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
+
+import testClasses.Course;
+import testClasses.Student;
+import testClasses.User;
+import testClasses.UserList;
+import testClasses.UserType;
 
 public class Faculty extends User
 {

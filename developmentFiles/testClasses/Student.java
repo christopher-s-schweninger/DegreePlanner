@@ -1,15 +1,23 @@
+package testClasses;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
+import AdvisementPlan;
+import DegreeList;
+import DegreePlan;
+import Elective;
+import Major;
+import Warnings;
+
 public class Student extends User
 {
-    public DegreePlan degreePlan;
+    //public DegreePlan degreePlan; //Old attrubute
     //public User appointedAdvisor; //maybe find a way to put this in as a string, if done have to add that to constructor
     public ArrayList<AdvisementPlan> advisementPlans;
     public double GPA;
     public boolean hasScholarships;
-    public ArrayList<Course> allCourses;
+    public ArrayList<Course> allCourses;  //Not read nor saved
     public HashMap<Course, String> completedCourses; //Course course, String courseGrade
     public ArrayList<Course> currentCourses; // Course course
     public ArrayList<Course> incompleteCourses; // Course course
@@ -17,9 +25,9 @@ public class Student extends User
     public int completedHours;
     public int incompleteHours; //added this to calculate totalDegreeHours
     public int currentHours;
-    public int currentSemester = 4;
-    public int totalDegreeHours = 130;
-    public ArrayList<ArrayList<Course>> eightSemesterPlan;
+    public int currentSemester = 4;  //Hard coded for now, needs to be read and saved
+    public int totalDegreeHours = 130;  //Hard coded for now, can either be read and saved or determined at creation.
+    public ArrayList<ArrayList<Course>> eightSemesterPlan;  //Not read nor normally saved. Can only be saved after creation is made
     public Major currentMajor;
 
     public Student(UUID userUUID, String firstName, String lastName, String userEmail, String userPass, 
@@ -51,10 +59,10 @@ public class Student extends User
         return GPA;
     }
 
-    public DegreePlan getDegreePlan()
-    {
-        return degreePlan;
-    }
+    // public DegreePlan getDegreePlan()
+    // {
+    //     return degreePlan;
+    // }
 
     public ArrayList<AdvisementPlan> getAdvisementPlans()
     {

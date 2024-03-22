@@ -1,3 +1,4 @@
+package testClasses;
 public enum Tab {
     HOMEPAGE,
     DEGREEPLAN,

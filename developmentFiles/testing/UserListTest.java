@@ -2,16 +2,19 @@ package testing;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.junit.AfterClass;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import testClasses.Student;
 import testClasses.User;
 import testClasses.UserList;
 import testClasses.UserType;
 import testClasses.WriteFile;
+
 
 
 
@@ -24,33 +27,56 @@ public class UserListTest {
     @BeforeEach
     public void setup() {
         allUsers.clear();
-        User user = new User("Gatsby", "Belon", "belon.gatsby11@email.sc.edu", "iLoveMyCat!32", "UserID123", UserType.STUDENT);
-         allUsers.add(user);
-         WriteFile.writeUser(user);
+        allUsers.add(new User(UUID.randomUUID(),"Belon", "Gatsby","belon.gatsby11@email.sc.edu","iLoveMyCat!32","bgatsby",UserType.STUDENT));
+        WriteFile.writeUser(userList);
     }
+    
 
     @AfterClass
     public void tearDown() {
+
+        UserList.getInstance().getUsers().clear();
+        WriteFile.writeUser(userList);
         
     }
 
     @Test
-    void TestGetUserByEmailAndPassByVaildEmailAndPass() {}
+    void TestGetUserByEmailAndPassByVaildEmailAndPass() {
+        User hasPassAndEmail = userList.getUserByEmailAndPass("belon.gatsby11@email.sc.edu","iLoveMyCat!32");
+        assertNotNull(hasPassAndEmail);
+        
+    }
 
     @Test
-    void TestGetUserByEmailAndPassByInvaildemailAndValidPass() {}
+    void TestGetUserByEmailAndPassByInvaildemailAndValidPass() {
+        User invalidEmail = userList.getUserByEmailAndPass("invalid@email.com","iLoveMyCat!32");
+        assertNull(invalidEmail);
+    }
 
     @Test
-    void TestGetUserByEmailAndPassByValidEmailAndInvalidPass() {}
+    void TestGetUserByEmailAndPassByValidEmailAndInvalidPass() {
+        User invalidPass = userList.getUserByEmailAndPass("belon.gatsby11@email.sc.edu","invalidpassword");
+        assertNull(invalidPass);
+    }
 
     @Test
-    void TestGetUserByEmailAndPassByInvalidEmailAndInvaildPass() {}
+    void TestGetUserByEmailAndPassByInvalidEmailAndInvaildPass() {
+        User invalidEmailAndPass = userList.getUserByEmailAndPass("invalid@email.com","invalidpassword");
+        assertNull(invalidEmailAndPass);
+    }
 
     @Test
 
-    void TestGetUserByEmailAndPassByEmpatyStringForEmailAndPass() {}
+    void TestGetUserByEmailAndPassByEmpatyStringForEmailAndPass() {
+        User emptyString = userList.getUserByEmailAndPass("","");
+        assertNull(emptyString);
+    }
 
     @Test
-    void TestGetUserByEmailAndPassByNullEmailAndPass() {}
+    void TestGetUserByEmailAndPassByNullEmailAndPass() {
+        User nullEmailAndPass = userList.getUserByEmailAndPass(null, null);
+        assertNull(nullEmailAndPass);
+    }
+
 
 }

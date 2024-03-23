@@ -2,9 +2,9 @@ package testClasses;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import Tab;
 
-public abstract class User 
+
+public  class User 
 {
     public String firstName;
     public String lastName;

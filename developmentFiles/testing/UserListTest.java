@@ -58,7 +58,7 @@ public class UserListTest {
     allUsers.add(student);
     WriteFile.writeUser(userList);
 
-      // Example faculty setup
+      //  faculty setup
         UUID facultyUUID = UUID.randomUUID();
         String facultyFirstName = "Rebecca";
         String facultyLastName = "Johnson";
@@ -79,12 +79,32 @@ public class UserListTest {
     }
     
 
-    @AfterClass
+    @AfterEach
     public void tearDown() {
 
         UserList.getInstance().getUsers().clear();
         WriteFile.writeUser(userList);
         
+    }
+
+    @Test
+    void testSuccessfulLogout() {
+        // Log in first
+        userList.login("belon.gatsby11@email.sc.edu", "iLoveMyCat!32");
+
+        // Perform logout
+        assertTrue(userList.logout());
+        assertNull(userList.user); // Ensure user is null after logout
+    }
+
+    @Test
+    void testUnsuccessfulLogout() {
+        // Ensure no user is logged in
+        userList.logout(); // Logout any potential user
+
+        // Perform logout
+        assertFalse(userList.logout());
+        assertNull(userList.user); // Ensure user is null even after unsuccessful logout
     }
 
     @Test
@@ -138,6 +158,26 @@ public class UserListTest {
     }
 
     @Test
+    void testGetUserByEmptyUserIDAndEmptyUserType() {
+        User user = userList.getUser("", UserType.STUDENT);
+        assertNull(user);
+    }
+
+    @Test 
+    void testGetUserByNullUserIDAndNullUserType() {
+        User user = userList.getUser(null, null);
+        assertNull(user);
+    }
+
+
+    @Test 
+
+    void testGetUserByNullUserIDAndUserTypeFaculty() {
+        User user = userList.getUser(null, UserType.ADVISOR);
+        assertNull(user);
+    }
+
+    @Test
     void testLoginWithValidCredentials() {
         User user = userList.login("belon.gatsby11@email.sc.edu", "iLoveMyCat!32");
         assertNotNull(user);
@@ -150,20 +190,48 @@ public class UserListTest {
     }
 
     @Test
+    void testLoginWithValidFacultyCredentials() {
+        User user = userList.login("rmjohnson@sc.edu", "b3stAdvisor0890#");
+        assertNotNull(user);
+    }
+
+    @Test
+    void testLoginWithEmptyCredentials() {
+        User user = userList.login("", "");
+        assertNull(user);
+    }
+
+    @Test
+
+    void testLoginWithNullCredentials() {
+        User user = userList.login(null, null);
+        assertNull(user);
+    }
+
+
+    @Test
     void testGetUserByEmail() {
         User user = userList.getUserByEmail("belon.gatsby11@email.sc.edu");
         assertNotNull(user);
     }
 
     @Test
-    void testGetUserByEmailWithInvalidEmail() {
-        User user = userList.getUserByEmail("invalid@email.com");
+
+    void testGetUserByEmptyEmail() {
+        User user = userList.getUserByEmail("");
         assertNull(user);
     }
 
     @Test
-    void testLogout() {
-        boolean result = userList.logout();
-        assertTrue(result);
+
+    void testGetUserByNullEmail() {
+        User user = userList.getUserByEmail(null);
+        assertNull(user);
+    }
+
+    @Test
+    void testGetUserByEmailWithInvalidEmail() {
+        User user = userList.getUserByEmail("invalid@email.com");
+        assertNull(user);
     }
 }

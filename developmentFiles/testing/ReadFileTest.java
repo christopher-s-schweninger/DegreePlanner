@@ -11,6 +11,7 @@ import testClasses.User;
 import testClasses.UserType;
 import testClasses.DegreePlan;
 import testClasses.AdvisementPlan;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.jupiter.api.AfterEach;

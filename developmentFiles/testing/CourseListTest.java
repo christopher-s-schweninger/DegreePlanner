@@ -111,6 +111,19 @@ class CourseListTest {
     }
 
     @Test
+    public void testAddExistingCourseUUID(){
+        UUID duplicateUUID = UUID.fromString("7ef722de-3eb8-4136-8de4-6fd697b1375f");
+
+        Course firstCourse = new Course(duplicateUUID, "CSCE 342", "First Course", "First Course Description", new ArrayList<>(), new ArrayList<>(), 3, "C", new ArrayList<>());
+        boolean firstAddResult = CourseList.getInstance().addCourse(firstCourse);
+        assertTrue(firstAddResult);
+
+        Course secondCourse = new Course(duplicateUUID, "CSCE 343", "Second Course", "Second Course Description", new ArrayList<>(), new ArrayList<>(), 3, "C", new ArrayList<>());
+        boolean secondAddResult = CourseList.getInstance().addCourse(secondCourse);
+        assertFalse(secondAddResult);
+    }
+
+    @Test
     public void testGetCoursesNotEmpty(){
         ArrayList<Course> courses = CourseList.getInstance().getCourses();
         //list of courses should not be null or empty

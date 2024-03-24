@@ -1,4 +1,4 @@
-package testClasses;
+package testing;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,6 +9,19 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import testClasses.DataConstants;
+import testClasses.User;
+import testClasses.Course;
+import testClasses.CourseList;
+import testClasses.UserType;
+import testClasses.Warnings;
+import testClasses.Major;
+import testClasses.Student;
+import testClasses.Faculty;
+import testClasses.DegreePlan;
+import testClasses.AdvisementPlan;
+import testClasses.ApplicationArea;
+import testClasses.Elective;
+import testClasses.Semester;
 
 /**
  * This reads in the following files = course.json, degree.json, student.json, faculty.json, advisement_plan.json

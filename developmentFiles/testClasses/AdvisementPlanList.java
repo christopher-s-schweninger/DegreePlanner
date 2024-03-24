@@ -23,12 +23,12 @@ public class AdvisementPlanList
         return advisementPlanList;
     }
 
-    public ArrayList<AdvisementPlanList> getAllList()
+    public ArrayList<AdvisementPlan> getAllList()
     {
         return null;
     }
 
-    public boolean AddList(AdvisementPlan newPlan)
+    public boolean AddPlan(AdvisementPlan newPlan)
     {
         return true;
     }

@@ -138,7 +138,7 @@ public class UserList
     }
 
 
-    private HashMap<String, UUID> getUserEmails()
+    public HashMap<String, UUID> getUserEmails()
     {
         HashMap<String, UUID> result = new HashMap<String, UUID>();
         ArrayList<User> tempUsers = getUsers();
@@ -149,7 +149,7 @@ public class UserList
         return result;
     }
 
-    private HashMap<String, UUID> getUserFullname()
+    public HashMap<String, UUID> getUserFullname()
     {
         HashMap<String, UUID> result = new HashMap<String, UUID>();
         ArrayList<User> tempUsers = getUsers();

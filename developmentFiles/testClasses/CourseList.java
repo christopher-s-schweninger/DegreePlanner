@@ -57,7 +57,7 @@ public class CourseList
      * @param courseUUID
      * @return
      */
-    public Course getCourseByUUID(UUID courseUUID)
+    public static Course getCourseByUUID(UUID courseUUID)
     {
         if(courseUUID != null){
             return courses.get(courseUUID); 

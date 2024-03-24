@@ -4,7 +4,7 @@ import java.util.UUID;
 
 
 
-public  class User 
+public abstract  class User 
 {
     public String firstName;
     public String lastName;

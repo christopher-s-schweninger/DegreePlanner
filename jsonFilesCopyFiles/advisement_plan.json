@@ -1,0 +1,16 @@
+[
+    {
+        "planID": "9a4ba1fa-2cb2-4560-b288-dae48b7b0483",
+        "studentUUID": "6fd679e4-042b-46b6-848b-99ba8652ba26",
+        "advisorUUID": "77562e0a-45f6-49f0-b90b-d1f0286fef61",
+        "advisedCourses": ["188df900-a1c4-40e4-94f6-da7965d18686", "8d8484ec-6320-417c-b144-488af67af5be"],
+        "attachedNotes": "Student advised to take CSCE 240 and CSCE 247"
+    },
+    {
+        "planID": "55465c6d-970f-44e2-90d3-1367d25ef70f",
+        "studentUUID": "6fd679e4-042b-46b6-848b-99ba8652ba26",
+        "advisorUUID": "77562e0a-45f6-49f0-b90b-d1f0286fef61",
+        "advisedCourses":["8d8484ec-6320-417c-b144-488af67af5be"],
+        "attachedNotes": "Is this course part of my concentration?"
+    }
+]

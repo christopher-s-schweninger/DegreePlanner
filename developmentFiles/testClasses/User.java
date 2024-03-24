@@ -2,7 +2,7 @@ package testClasses;
 import java.util.ArrayList;
 import java.util.UUID;
 
-
+import testClasses.Tab;
 
 public abstract  class User 
 {
@@ -127,6 +127,21 @@ public abstract  class User
     public UserType getUserType()
     {
         return this.userType;
+    }
+
+    public String getUserFirstName()
+    {
+        return this.firstName;
+    }
+
+    public String getUserLastName()
+    {
+        return this.lastName;
+    }
+
+    public String getUserFullName()
+    {
+        return this.firstName + " " + this.lastName;
     }
 
     /**

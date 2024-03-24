@@ -71,7 +71,7 @@ public class HomeFacade {
 
     public User getUser(String email, String password)
     {
-        return userList.getUser(email, password);
+        return userList.getUserByEmailAndPass(email, password);
     }
     
 

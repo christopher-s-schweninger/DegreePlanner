@@ -1,6 +1,7 @@
 package testClasses;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
@@ -9,12 +10,13 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+
 import testClasses.Course;
 import testClasses.CourseList;
 import testClasses.User;
 import testClasses.UserList;
 
-public class WriteFile extends DataConstants 
+ public class WriteFile extends DataConstants 
 {
     //Need to update, not in video as of 3/15 due to loss of member (Benjamin King)
     public static boolean writeUsers()  // Second & Third

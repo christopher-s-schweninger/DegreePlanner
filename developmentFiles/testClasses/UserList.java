@@ -35,7 +35,7 @@ public class UserList
         return userList;
     }
 
-    public User getUser(String email, String password)
+    public User getUserByEmailAndPass(String email, String password)
     {
         for(User user : getUsers()) {
             if(user.userEmail == email && user.getUserPass() == password) 

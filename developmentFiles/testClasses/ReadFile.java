@@ -28,14 +28,22 @@ public class ReadFile extends DataConstants
 		ArrayList<User> allUsers = new ArrayList<User>();
 		ArrayList<User> students = readStudents();
 		ArrayList<User> faculty = readFaculty();
-		for (User student : students)
+		// Check if students or faculty is null
+		if (students != null) 
 		{
-			allUsers.add(student);
+			for (User student : students) 
+			{
+				allUsers.add(student);
+			}
 		}
-		for (User facultyMember : faculty)
+		//Check if students or faculty is null
+		if (faculty != null) 
 		{
-			allUsers.add(facultyMember);
-		}
+			for (User facultyMember : faculty) 
+			{
+				allUsers.add(facultyMember);
+			}
+		}	
 		return allUsers;
 	}
 	/**

@@ -23,6 +23,7 @@ import testClasses.WriteFile;
 
 
 
+
 public class UserListTest {
     
     private UserList userList = UserList.getInstance();
@@ -56,7 +57,7 @@ public class UserListTest {
             advisementPlans, GPA, hasScholarships, currMajor);
 
     allUsers.add(student);
-    WriteFile.writeUser(userList);
+    WriteFile.writeUsers();
 
       //  faculty setup
         UUID facultyUUID = UUID.randomUUID();
@@ -75,7 +76,7 @@ public class UserListTest {
 
         allUsers.add(faculty);
 
-        WriteFile.writeUser(userList);
+        WriteFile.writeUsers();
     }
     
 
@@ -83,7 +84,7 @@ public class UserListTest {
     public void tearDown() {
 
         UserList.getInstance().getUsers().clear();
-        WriteFile.writeUser(userList);
+        WriteFile.writeUsers();
         
     }
 
@@ -234,4 +235,96 @@ public class UserListTest {
         User user = userList.getUserByEmail("invalid@email.com");
         assertNull(user);
     }
+    @Test
+    void testGetUserList() {
+        HashMap<UUID, User> userListMap = userList.getUserList();
+        assertEquals(2, userListMap.size());
+        assertTrue(userListMap.containsKey(userList.getUsers().get(0).getUUID()));
+        assertTrue(userListMap.containsKey(userList.getUsers().get(1).getUUID()));
+    }
+
+    @Test
+    void testGetUserEmails() {
+        HashMap<String, UUID> userEmails = userList.getUserEmails();
+        assertEquals(2, userEmails.size());
+        assertTrue(userEmails.containsKey("belon.gatsby11@email.sc.edu"));
+        assertTrue(userEmails.containsKey("rmjohnson@sc.edu"));
+    }
+
+    @Test
+    void testGetUserFullname() {
+        HashMap<String, UUID> userFullname = userList.getUserFullname();
+        assertEquals(2, userFullname.size());
+        assertTrue(userFullname.containsKey("Belon Gatsby"));
+        assertTrue(userFullname.containsKey("Rebecca Johnson"));
+    }
+
+
+    //The addUser method can't be tested as it is incompte and needs to be compted to test it.
+
+    // @Test
+    // void testAddUser() {
+    // }
+    @Test
+    void testUpdateAdviseStuList_AddingAdvisingStudents() {
+        Faculty advisorFaculty = createAdvisorFacultyWithStudents();
+        allUsers.add(advisorFaculty);
+        userList.updateAdviseStuList();
+        assertTrue(advisorFaculty.getAdvisingStudents().size() > 0);
+    }
+
+    @Test
+    void testUpdateAdviseStuList_NoAdvisingStudents() {
+        Faculty advisorFaculty = createAdvisorFacultyWithoutStudents();
+        allUsers.add(advisorFaculty);
+        userList.updateAdviseStuList();
+        assertEquals(0, advisorFaculty.getAdvisingStudents().size());
+    }
+
+    @Test
+    void testUpdateAdviseStuList_NonAdvisorFaculty() {
+        Faculty nonAdvisorFaculty = createNonAdvisorFaculty();
+        allUsers.add(nonAdvisorFaculty);
+        int initialSize = nonAdvisorFaculty.getAdvisingStudents().size();
+        userList.updateAdviseStuList();
+        assertEquals(initialSize, nonAdvisorFaculty.getAdvisingStudents().size());
+    }
+
+    private Faculty createAdvisorFacultyWithStudents() {
+        UUID facultyUUID = UUID.randomUUID();
+        String facultyFirstName = "John";
+        String facultyLastName = "Doe";
+        String facultyEmail = "john.doe@example.com";
+        String facultyPass = "password";
+        String facultyID = "jdoe";
+        UserType facultyType = UserType.ADVISOR;
+        HashMap<UUID, User> advisingStudents = new HashMap<>();
+        advisingStudents.put(UUID.randomUUID(), new Student(UUID.randomUUID(), "Alice", "Smith", "alice@example.com", "password", "alice", UserType.STUDENT,
+                new HashMap<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), 0, 0, new ArrayList<>(), 3.0, true, Major.COMPUTER_SCIENCE));
+        return new Faculty(facultyUUID, facultyFirstName, facultyLastName, facultyEmail, facultyPass, facultyID, facultyType, advisingStudents, new HashMap<>());
+    }
+    
+    private Faculty createAdvisorFacultyWithoutStudents() {
+        UUID facultyUUID = UUID.randomUUID();
+        String facultyFirstName = "Jane";
+        String facultyLastName = "Doe";
+        String facultyEmail = "jane.doe@example.com";
+        String facultyPass = "password";
+        String facultyID = "jdoe";
+        UserType facultyType = UserType.ADVISOR;
+        return new Faculty(facultyUUID, facultyFirstName, facultyLastName, facultyEmail, facultyPass, facultyID, facultyType, new ArrayList<>());
+    }
+    
+    private Faculty createNonAdvisorFaculty() {
+        UUID facultyUUID = UUID.randomUUID();
+        String facultyFirstName = "Bob";
+        String facultyLastName = "Smith";
+        String facultyEmail = "bob.smith@example.com";
+        String facultyPass = "password";
+        String facultyID = "bsmith";
+        UserType facultyType = UserType.PROFESSOR;
+        return new Faculty(facultyUUID, facultyFirstName, facultyLastName, facultyEmail, facultyPass, facultyID, facultyType, new ArrayList<>());
+    }
+
+
 }

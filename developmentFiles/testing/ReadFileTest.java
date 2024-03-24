@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+import testClasses.ReadFile;
 import testClasses.Course;
 import testClasses.User;
 import testClasses.UserType;

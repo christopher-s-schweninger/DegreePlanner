@@ -1,1 +1,34 @@
-[]
+[
+    {
+        "userUUID": "77562e0a-45f6-49f0-b90b-d1f0286fef61",
+        "userID": "rjhonson",
+        "firstName": "Rebecca",
+        "lastName": "Johnson",
+        "userEmail": "rmjohnson@sc.edu",
+        "userPassword": "b3stAdvisor0890#",
+        "userType": "ADVISOR",
+        "advisingStudents":["6fd679e4-042b-46b6-848b-99ba8652ba26", "4e044032-d801-41bc-8bf3-1770b80b3daf", 
+        "fff83f51-70ad-4379-8cfc-dd2f05b31b8c", "2c6bcd6e-d908-481c-8048-9114fff5939e"]
+    },
+    {
+        "userUUID": "a7b6cee1-421b-419e-b9f3-eeee96b95cee",
+        "userID": "bgoodwind",
+        "firstName": "Bryan",
+        "lastName": "Goodwind",
+        "userEmail": "bgoodwind@csc.sc.edu",
+        "userPassword": "gr8C0mpPr0f998",
+        "userType": "PROFESSOR",
+        "coursesInstructing": ["69661838-93bd-49a4-b52f-a984bb1121f2", "6a13b8a1-2bf2-464b-8f14-ce83ad68f97e",
+        "8d8484ec-6320-417c-b144-488af67af5be", "188df900-a1c4-40e4-94f6-da7965d18686"]
+    },
+    {
+        "userUUID": "5832a19e-9864-44d1-9df4-4d5378fb5d53",
+        "userID": "oodden",
+        "firstName": "Osbert",
+        "lastName": "Odden",
+        "userEmail": "oodden@csc.sc.edu",
+        "userPassword": "tempP4SSisNOTTEMP",
+        "userType": "ADVISOR",
+        "advisingStudents":[]
+    }
+]

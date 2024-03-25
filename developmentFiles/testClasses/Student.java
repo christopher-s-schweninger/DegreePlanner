@@ -3,12 +3,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
-import testClasses.AdvisementPlan;
-import testClasses.DegreeList;
-import testClasses.DegreePlan;
-import testClasses.Elective;
-import testClasses.Major;
-import testClasses.Warnings;
+// import testClasses.AdvisementPlan;
+// import testClasses.DegreeList;
+// import testClasses.DegreePlan;
+// import testClasses.Elective;
+// import testClasses.Major;
+// import testClasses.Warnings;
 
 public class Student extends User
 {
@@ -173,7 +173,8 @@ public class Student extends User
         eightSemesterPlan = new ArrayList<ArrayList<Course>>();
         DegreeList degreelist = DegreeList.getInstance();
         DegreePlan degree = degreelist.getDegree(currentMajor); //gets the skeleton
-        for (int i = 0; i < currentSemester; i++) //loop thru semesters leading up to current
+        //loop thru semesters leading up to current
+        for (int i = 0; i < currentSemester; i++) 
         {
             ArrayList<Course> semester = new ArrayList<Course>();
             for (int j = 0; j < degree.semesterCourses.get(i).getCourses().size(); j++) //looping thru each individual semester + its courses??
@@ -204,26 +205,17 @@ public class Student extends User
                 {  
                     if(completedCourses.keySet().contains(degree.semesterCourses.get(i).getCourses().get(j).get(k))) // we completed that course already, find a replacement
                     {
-                        //since we've already completed that course, need to find one that can replace it
-                        //maybe try and get a course from semester beyond, and then replace that with another class
-                        
-                        
                         //fill gaps with electives, use isElectiveComplete to loop through all electives and see which are not satisfied yet,
                         //whichever are not satisfied, select electives that have not been taken from that category and add in that gap
                         // for (int a = 0; a < degree.)
                         // {
                         //     if(isElectiveComplete(null))
                         // }    
-                        
-                        
-                        
-                        
-                        taken = true;
+                        //taken = true;
                     }
                     else if(!taken && k == degree.semesterCourses.get(i).getCourses().get(j).size() - 1) //need to take that course/its not in the completed courses set
                     {
-                        Course tempCourse; //temp arraylist bc we need to select a specific course out of the options
-                        tempCourse = degree.semesterCourses.get(i).getCourses().get(j).get(0); //adds the first choice out of the choices to 8semester
+                        Course tempCourse = degree.semesterCourses.get(i).getCourses().get(j).get(0); //adds the first choice out of the choices to 8semester
                         semester.add(tempCourse); //adds to the students 8semester
                     }
                 }

@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Test;
 
 class CourseListTest {
 
+    //CourseList's state should already be reset before each test
     @BeforeClass
     public void oneTimeSetup(){}
 
@@ -29,44 +30,59 @@ class CourseListTest {
     @AfterEach
     public void tearDown(){}
 
-    // @Test
-    // public void testNullInstance(){
-    //     CourseList nullInstance = CourseList.getInstance();
-    //     assertEquals(nullInstance, null);
-    // }
-
     @Test
     public void testSingletonInstance(){
         CourseList firstInstance = CourseList.getInstance();
         CourseList secondInstance = CourseList.getInstance();
+
         assertSame(firstInstance, secondInstance);
     }
 
-    // @Test
-    // public void testNullCourse(){
-    //     Course nullCourse = CourseList.getCourse(null);
-    //     assertEquals(nullCourse, null);
-    // }
+    //should we have reset instance method?
+    @Test
+    public void testResetInstance(){
+        CourseList originalInstance = CourseList.getInstance();
+        originalInstance.addCourse(new Course(UUID.randomUUID(), "CSCE 123", "Course 123", "Course Description", new ArrayList<>(), new ArrayList<>(), 3, "C", new ArrayList<>()));
+        assertFalse(originalInstance.getCourses().isEmpty());
+
+        CourseList.resetInstance();
+        CourseList newInstance = CourseList.getInstance();
+        assertTrue(newInstance.getCourses().isEmpty());
+        assertNotSame(originalInstance, newInstance);
+    }
 
     @Test
     public void testGetCourseByValidID(){
         String validCourseID = "CSCE 101";
         Course course = CourseList.getCourse(validCourseID);
+
         assertNotNull(course);
         assertEquals(validCourseID, course.getCourseID());
+        
     }
 
     @Test
     public void testGetCourseByInvalidID(){
         String invalidCourseID = "CSCE 999";
         Course course = CourseList.getCourse(invalidCourseID);
+
         assertNull(course);
+    }
+
+    @Test
+    public void testGetCourseIDEmptyList(){
+        CourseList.resetInstance();
+        String nonExistentCourseID = "CSCE 123";
+        Course result = CourseList.getCourse(nonExistentCourseID);
+
+        assertNull(result);
     }
 
     @Test
     public void testGetCourseByValidUUID(){
         UUID validCourseUUID = UUID.fromString("0ee3fc1c-ec19-4637-aeb5-614577b6d22f");
         Course course = CourseList.getCourseByUUID(validCourseUUID);
+
         assertNotNull(course);
         assertEquals(validCourseUUID, course.getCourseUUID());
     }
@@ -75,7 +91,17 @@ class CourseListTest {
     public void testGetCourseByInvalidUUID(){
         UUID invalidCourseUUID = UUID.fromString("invalid_UUID");
         Course course = CourseList.getCourseByUUID(invalidCourseUUID);
+
         assertNull(course);
+    }
+
+    @Test
+    public void testGetCourseUUIDEmptyList(){
+        CourseList.resetInstance();
+        String nonExistentCourseUUID = "non-existent UUID";
+        Course result = CourseList.getCourse(nonExistentCourseUUID);
+
+        assertNull(result);
     }
 
     @Test
@@ -111,6 +137,13 @@ class CourseListTest {
     }
 
     @Test
+    public void testAddNullCourse() {
+        boolean result = CourseList.getInstance().addCourse(null);
+        
+        assertFalse(result);
+    }
+
+    @Test
     public void testAddExistingCourseUUID(){
         UUID duplicateUUID = UUID.fromString("7ef722de-3eb8-4136-8de4-6fd697b1375f");
 
@@ -124,18 +157,23 @@ class CourseListTest {
     }
 
     @Test
+    public void testAddExistingCourseID() {
+        Course firstCourse = new Course(UUID.randomUUID(), "CSCE 342", "First Course", "First Course Description", new ArrayList<>(), new ArrayList<>(), 3, "C", new ArrayList<>());
+        boolean firstAddResult = CourseList.getInstance().addCourse(firstCourse);
+        assertTrue(firstAddResult);
+    
+        Course secondCourse = new Course(UUID.randomUUID(), "CSCE 342", "Second Course", "Second Course Description", new ArrayList<>(), new ArrayList<>(), 3, "C", new ArrayList<>());
+        boolean secondAddResult = CourseList.getInstance().addCourse(secondCourse);
+        assertFalse(secondAddResult);
+    }
+
+    @Test
     public void testGetCoursesNotEmpty(){
         ArrayList<Course> courses = CourseList.getInstance().getCourses();
         //list of courses should not be null or empty
         assertNotNull(courses);
         assertFalse(courses.isEmpty());
     }
-
-    // @Test
-    // public void testGetCoursesEmptyState(){
-    //     ArrayList<Course> courses = CourseList.getInstance().getCourses();
-    //     assertTrue(courses.isEmpty());
-    // }
 
     @Test
     public void testEditCourseAsAdvisor(){
@@ -194,6 +232,18 @@ class CourseListTest {
         Course uneditedCourse = CourseList.getCourse(courseID);
         assertNotEquals(newCourseName, uneditedCourse.getCourseName());
         assertNotEquals(newDescription, uneditedCourse.getCourseDescription());
+    }
+
+    @Test
+    public void testEditNonExistingCourse(){
+        CourseList courseList = CourseList.getInstance();
+        String nonExistingCourseID = "dummyID";
+        UserType userType = UserType.ADVISOR;
+        String newName = "new name";
+        String newDescription = "new description";
+
+        boolean result = courseList.editCourse(nonExistingCourseID, userType, newName, newDescription);
+        assertFalse(result);
     }
 
 }

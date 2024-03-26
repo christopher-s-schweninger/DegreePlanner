@@ -57,7 +57,7 @@ public class UserListTest {
             advisementPlans, GPA, hasScholarships, currMajor);
 
     allUsers.add(student);
-    WriteFile.writeUsers();
+    //WriteFile.writeUsers();
 
       //  faculty setup
         UUID facultyUUID = UUID.randomUUID();
@@ -76,7 +76,7 @@ public class UserListTest {
 
         allUsers.add(faculty);
 
-        WriteFile.writeUsers();
+       // WriteFile.writeUsers();
     }
     
 
@@ -117,7 +117,7 @@ public class UserListTest {
 
     @Test
     void TestGetUserByEmailAndPassByInvaildemailAndValidPass() {
-        User invalidEmail = userList.getUserByEmailAndPass("invalid@email.com","iLoveMyCat!32");
+        User invalidEmail = userList.getUserByEmailAndPass("UserList.com","iLoveMyCat!32");
         assertNull(invalidEmail);
     }
 
@@ -129,7 +129,7 @@ public class UserListTest {
 
     @Test
     void TestGetUserByEmailAndPassByInvalidEmailAndInvaildPass() {
-        User invalidEmailAndPass = userList.getUserByEmailAndPass("invalid@email.com","invalidpassword");
+        User invalidEmailAndPass = userList.getUserByEmailAndPass("UserList@email.com","invalidpassword");
         assertNull(invalidEmailAndPass);
     }
 
@@ -154,7 +154,7 @@ public class UserListTest {
 
     @Test
     void testGetUserByInvalidUserIDAndUserType() {
-        User user = userList.getUser("invaliduserid", UserType.STUDENT);
+        User user = userList.getUser("UserListID", UserType.STUDENT);
         assertNull(user);
     }
 
@@ -232,7 +232,7 @@ public class UserListTest {
 
     @Test
     void testGetUserByEmailWithInvalidEmail() {
-        User user = userList.getUserByEmail("invalid@email.com");
+        User user = userList.getUserByEmail("UserList@email.com");
         assertNull(user);
     }
     @Test

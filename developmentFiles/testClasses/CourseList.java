@@ -35,6 +35,13 @@ public class CourseList
         return courseList;
     }
 
+    //added this method for test class
+    public static void resetInstance(){
+        courseList = null;
+        courses.clear();
+        courseNames.clear();
+    }
+
     /**
      * looks up the associated UUID using courseID from courseNames HashMap, 
      * uses the UUID to directly access the Course object associated with the courseID

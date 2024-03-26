@@ -5,8 +5,11 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import testClasses.Course;
+import testClasses.CourseList;
 import testClasses.ReadFile;
+import testClasses.WriteFile;
 import testClasses.User;
+import testClasses.DegreeList;
 
 import java.util.Random;
 
@@ -42,7 +45,8 @@ public class testFile {
             System.out.println(tempCourse.testToString());
             System.out.println(tempCourse.reqsToString());
         }
-        else {
+        else
+        {
             System.out.println("Noting was in random course object");
         }
         DegreeList degreeList = DegreeList.getInstance();
@@ -50,7 +54,16 @@ public class testFile {
         {
             System.out.println("Successful read-in of degrees");
         }
-        
+        CourseList courseList = CourseList.getInstance();
+        if (courseList.getCourses().size() != courseArray.size())
+            System.out.println("Different read at different instances");
+        else
+            System.out.println("Same size read in at different instances");
+        System.out.println("Attempting to write courses");
+        if(WriteFile.writeCourse())
+            System.out.println("Write successful");
+        else
+            System.out.println("Write unsuccessful");
 
     }
 }

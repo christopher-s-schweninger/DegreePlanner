@@ -41,11 +41,13 @@ import testClasses.UserList;
         try (FileWriter studentWriter = new FileWriter("tempStudent.json"))  
         {
             studentWriter.write(usersArray.toJSONString());
+            studentWriter.flush();
             studentWriter.close();
         }
         catch (Exception e)
         {
             e.printStackTrace();
+            return false;
         }
         usersArray.clear();
         for(HashMap.Entry<UUID, User> userMap : userEntry.entrySet())
@@ -60,11 +62,13 @@ import testClasses.UserList;
         try (FileWriter facFileWriter = new FileWriter("tempFaculty.json"))
         {
             facFileWriter.write(usersArray.toJSONString());
+            facFileWriter.flush();
             facFileWriter.close();
         }
         catch (Exception e)
         {
             e.printStackTrace();
+            return false;
         }
         return true;
     }
@@ -84,9 +88,50 @@ import testClasses.UserList;
         jsonObject.put(USER_EMAIL, user.getUserEmail());
         jsonObject.put(USER_PASSWORD, user.getUserPass());
         jsonObject.put(USER_TYPE, user.getUserType());
-        //jsonObject.put(DEGREE_PLAN, user.writeDegreePlan(user.))
-        //file.write(jsonObject.toJSONString());
-        //file.close();
+        HashMap<Course, String> temp = ((Student)user).getCompletedCourses();
+        JSONArray jsonArray = new JSONArray();
+        for (HashMap.Entry<Course, String> tempEntry : temp.entrySet())
+        {
+            JSONObject jsonCourseNGrade = new JSONObject();
+            jsonCourseNGrade.put(COURSE_ID, (tempEntry.getKey()).getCourseID());
+            jsonCourseNGrade.put(GRADE, tempEntry.getValue());
+            jsonArray.add(jsonCourseNGrade);
+        }
+        jsonObject.put(COMPLETED_COURSES, jsonArray);
+        ArrayList<Course> tempCourses = ((Student)user).getCurrentCourses();
+        JSONArray jsonArray2ElecticBoogaloo = new JSONArray();
+        for (Course course : tempCourses)
+        {
+            jsonArray2ElecticBoogaloo.add(course.getCourseID());
+        }
+        jsonObject.put(CURRENT_COURSES, jsonArray2ElecticBoogaloo);
+        ArrayList<Course> tempIncompletes = ((Student)user).getIncompleteCourses();
+        JSONArray jsonArrayTheSaga = new JSONArray();
+        for (Course course : tempIncompletes)
+        {
+            jsonArrayTheSaga.add(course.getCourseID());
+        }
+        jsonObject.put(INCOMPLETE_COURSES, jsonArrayTheSaga);
+        ArrayList<Warnings> tempWarnings = ((Student)user).warnings;
+        JSONArray jsonArrayTheCrappyReboot = new JSONArray();
+        for (Warnings warn : tempWarnings)
+        {
+            jsonArrayTheCrappyReboot.add(warn.toString());
+        }
+        jsonObject.put(WARNINGS, jsonArrayTheCrappyReboot);
+        jsonObject.put(COMPLETED_HOURS, ((Student)user).completedHours);
+        jsonObject.put(CURRENT_HOURS, ((Student)user).currentHours);
+        jsonObject.put(TOTAL_DEGREE_HOURS, ((Student)user).totalDegreeHours);
+        ArrayList<UUID> tempPlans = ((Student)user).advisementPlanUUIDs;
+        JSONArray jsonArrayTheJourneysEnd = new JSONArray();
+        for (UUID uuid : tempPlans)
+        {
+            jsonArrayTheJourneysEnd.add(uuid.toString());
+        }
+        jsonObject.put(ADVISEMENT_PLAN, jsonArrayTheJourneysEnd);
+        jsonObject.put(GPA, ((Student)user).getGPA());
+        jsonObject.put(HAS_SCHOLARSHIPS, ((Student)user).hasScholarships);
+        jsonObject.put(MAJOR_NAME, (((Student)user).currentMajor).toString());
         return jsonObject;
     }
 
@@ -167,7 +212,7 @@ import testClasses.UserList;
         {
             jsonObject = new JSONObject();
             jsonObject.put(COURSE_UUID, course.getCourseUUID());
-            jsonObject.put(COURSEID, course.getCourseID());
+            jsonObject.put(COURSE_ID, course.getCourseID());
             jsonObject.put(COURSE_NAME, course.getCourseName());
             jsonObject.put(COURSE_DESCRIPTION, course.getCourseDescription());
             JSONObject jsonPrereq = new JSONObject();
@@ -233,6 +278,7 @@ import testClasses.UserList;
         {
             courseWriter.write(courseArray.toJSONString());
             courseWriter.flush();
+            courseWriter.close();
             return true;
         }
         catch (Exception e)

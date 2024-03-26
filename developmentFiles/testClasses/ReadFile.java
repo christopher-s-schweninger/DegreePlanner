@@ -210,7 +210,7 @@ public class ReadFile extends DataConstants
 			for (int i = 0; i < compCourses.size(); i++)  // Getting each course and its recieved grade
 			{
 				JSONObject compCourse = (JSONObject)compCourses.get(i);
-				String courseID = (String)compCourse.get(COURSE_UUID);
+				String courseID = (String)compCourse.get(COURSE_ID);
 				Course tempCourse = CList.getCourse(courseID);
 				String grade = (String)compCourse.get(GRADE);
 
@@ -290,7 +290,7 @@ public class ReadFile extends DataConstants
 			{
 				JSONObject courseJSON = (JSONObject)coursesJSON.get(i);
 				UUID courseUUID = UUID.fromString((String)courseJSON.get(COURSE_UUID));
-				String courseID = (String)courseJSON.get(COURSEID);
+				String courseID = (String)courseJSON.get(COURSE_ID);
 				String courseName = (String)courseJSON.get(COURSE_NAME);
 				String courseDescription = (String)courseJSON.get(COURSE_DESCRIPTION);
 				ArrayList<HashMap<UUID, String>> coursePrereq, courseCoreq;  // Req layout = & requirement -> ArrayList member, OR requirement -> HashMap member

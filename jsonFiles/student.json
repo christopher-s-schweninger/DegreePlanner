@@ -10,11 +10,11 @@
         "completedCourses":
         [
               {
-                 "courseUUID": "CSCE 145",
+                 "courseID": "CSCE 145",
                  "grade": "A"
              },
              {
-                 "courseUUID": "MATH 141",
+                 "courseID": "MATH 141",
                  "grade": "B+"
               }
         ],
@@ -39,7 +39,7 @@
         "completedCourses":
         [
             {
-                "courseUUID": "CSCE 145",
+                "courseID": "CSCE 145",
                 "grade": "C"
             }
          ],
@@ -64,15 +64,15 @@
         "completedCourses":
         [
             {
-                "courseUUID": "CSCE 145",
+                "courseID": "CSCE 145",
                 "grade": "A"
             },
             {
-                "courseUUID": "CSCE 146",
+                "courseID": "CSCE 146",
                 "grade": "A"
             },
             {
-                "courseUUID": "MATH 141",
+                "courseID": "MATH 141",
                 "grade": "B+"
             }
         ],
@@ -97,11 +97,11 @@
         "completedCourses":
         [
             {
-                "courseUUID": "CSCE 145",
+                "courseID": "CSCE 145",
                 "grade": "A"
             },
             {
-                "courseUUID": "MATH 141",
+                "courseID": "MATH 141",
                 "grade": "B+"
             }
         ],
@@ -126,91 +126,91 @@
         "completedCourses":
         [
             {
-                "courseUUID": "ENGL 101",
+                "courseID": "ENGL 101",
                 "grade": "A"
             },
             {
-                "courseUUID": "MATH 141",
+                "courseID": "MATH 141",
                 "grade": "B+"
             },
             {
-                "courseUUID": "CSCE 145",
+                "courseID": "CSCE 145",
                 "grade": "A"
             },
             {
-                "courseUUID": "CSCE 190",
+                "courseID": "CSCE 190",
                 "grade": "A"
             },
             {
-                "courseUUID": "ARTS 103",
+                "courseID": "ARTS 103",
                 "grade": "A"
             },
             {
-                "courseUUID": "ENGL 102",
+                "courseID": "ENGL 102",
                 "grade": "A"
             },
             {
-                "courseUUID": "MATH 142",
+                "courseID": "MATH 142",
                 "grade": "B"
             },
             {
-                "courseUUID": "CHEM 111",
+                "courseID": "CHEM 111",
                 "grade": "A"
             },
             {
-                "courseUUID": "CHEM 111L",
+                "courseID": "CHEM 111L",
                 "grade": "A"
             },
             {
-                "courseUUID": "CSCE 146",
+                "courseID": "CSCE 146",
                 "grade": "A"
             },
             {
-                "courseUUID": "CSCE 215",
+                "courseID": "CSCE 215",
                 "grade": "A"
             },
             {
-                "courseUUID": "CSCE 211",
+                "courseID": "CSCE 211",
                 "grade": "C"
             },
             {
-                "courseUUID": "CSCE 240",
+                "courseID": "CSCE 240",
                 "grade": "C"
             },
             {
-                "courseUUID": "MATH 374",
+                "courseID": "MATH 374",
                 "grade": "A"
             },
             {
-                "courseUUID": "CHEM 112",
+                "courseID": "CHEM 112",
                 "grade": "A"
             },
             {
-                "courseUUID": "CHEM 112L",
+                "courseID": "CHEM 112L",
                 "grade": "B+"
             },
             {
-                "courseUUID": "PHIL 325",
+                "courseID": "PHIL 325",
                 "grade": "F"
             },
             {
-                "courseUUID": "CSCE 212",
+                "courseID": "CSCE 212",
                 "grade": "A"
             },
             {
-                "courseUUID": "CSCE 247",
+                "courseID": "CSCE 247",
                 "grade": "A"
             },
             {
-                "courseUUID": "ASTR 101",
+                "courseID": "ASTR 101",
                 "grade": "A"
             },
             {
-                "courseUUID": "MATH 241",
+                "courseID": "MATH 241",
                 "grade": "A"
             },
             {
-                "courseUUID": "ANTH 101",
+                "courseID": "ANTH 101",
                 "grade": "A"
             }
         ],
@@ -235,99 +235,99 @@
         "completedCourses":
         [
             {
-                "courseUUID": "ENGL 101",
+                "courseID": "ENGL 101",
                 "grade": "A"
             },
             {
-                "courseUUID": "MATH 141",
+                "courseID": "MATH 141",
                 "grade": "B+"
             },
             {
-                "courseUUID": "CSCE 145",
+                "courseID": "CSCE 145",
                 "grade": "A"
             },
             {
-                "courseUUID": "CSCE 190",
+                "courseID": "CSCE 190",
                 "grade": "A"
             },
             {
-                "courseUUID": "ARTS 103",
+                "courseID": "ARTS 103",
                 "grade": "A"
             },
             {
-                "courseUUID": "ENGL 102",
+                "courseID": "ENGL 102",
                 "grade": "A"
             },
             {
-                "courseUUID": "MATH 142",
+                "courseID": "MATH 142",
                 "grade": "B"
             },
             {
-                "courseUUID": "CHEM 111",
+                "courseID": "CHEM 111",
                 "grade": "A"
             },
             {
-                "courseUUID": "CHEM 111L",
+                "courseID": "CHEM 111L",
                 "grade": "A"
             },
             {
-                "courseUUID": "CSCE 146",
+                "courseID": "CSCE 146",
                 "grade": "A"
             },
             {
-                "courseUUID": "CSCE 215",
+                "courseID": "CSCE 215",
                 "grade": "A"
             },
             {
-                "courseUUID": "CSCE 211",
+                "courseID": "CSCE 211",
                 "grade": "C"
             },
             {
-                "courseUUID": "CSCE 240",
+                "courseID": "CSCE 240",
                 "grade": "C"
             },
             {
-                "courseUUID": "MATH 374",
+                "courseID": "MATH 374",
                 "grade": "A"
             },
             {
-                "courseUUID": "CHEM 112",
+                "courseID": "CHEM 112",
                 "grade": "A"
             },
             {
-                "courseUUID": "CHEM 112L",
+                "courseID": "CHEM 112L",
                 "grade": "B+"
             },
             {
-                "courseUUID": "PHIL 325",
+                "courseID": "PHIL 325",
                 "grade": "C"
             },
             {
-                "courseUUID": "CSCE 212",
+                "courseID": "CSCE 212",
                 "grade": "A"
             },
             {
-                "courseUUID": "CSCE 247",
+                "courseID": "CSCE 247",
                 "grade": "A"
             },
             {
-                "courseUUID": "ASTR 101",
+                "courseID": "ASTR 101",
                 "grade": "A"
             },
             {
-                "courseUUID": "MATH 241",
+                "courseID": "MATH 241",
                 "grade": "A"
             },
             {
-                "courseUUID": "ANTH 101",
+                "courseID": "ANTH 101",
                 "grade": "A"
             },
             {
-                "courseUUID": "CSCE 564",
+                "courseID": "CSCE 564",
                 "grade": "A"
             },
             {
-                "courseUUID": "MATH 242",
+                "courseID": "MATH 242",
                 "grade": "A"
             }
         ],

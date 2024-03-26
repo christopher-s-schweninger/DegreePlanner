@@ -37,7 +37,8 @@ import testClasses.UserList;
             //return false;
             //usersArray.add(usersArray.toJSONString);
         }
-        try (FileWriter studentWriter = new FileWriter(STUDENT_FILE_NAME))  // STUDENT_FILE_NAME
+        //STUDENT_FILE_NAME
+        try (FileWriter studentWriter = new FileWriter("tempStudent.json"))  
         {
             studentWriter.write(usersArray.toJSONString());
             studentWriter.close();
@@ -55,7 +56,8 @@ import testClasses.UserList;
             }
             //return false;
         }
-        try (FileWriter facFileWriter = new FileWriter(FACULTY_FILE_NAME))
+        //FACULTY_FILE_NAME
+        try (FileWriter facFileWriter = new FileWriter("tempFaculty.json"))
         {
             facFileWriter.write(usersArray.toJSONString());
             facFileWriter.close();

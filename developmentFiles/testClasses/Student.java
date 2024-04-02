@@ -15,6 +15,7 @@ public class Student extends User
     //public DegreePlan degreePlan; //Old attrubute
     //public User appointedAdvisor; //maybe find a way to put this in as a string, if done have to add that to constructor
     public ArrayList<AdvisementPlan> advisementPlans;
+    public ArrayList<UUID> advisementPlanUUIDs;
     public double GPA;
     public boolean hasScholarships;
     public ArrayList<Course> allCourses;  //Not read nor saved
@@ -47,6 +48,7 @@ public class Student extends User
         this.currentHours = completedHours;
         this.currentMajor = currMajor;
         this.warnings = warnings;
+        this.advisementPlanUUIDs = advisementPlans;
     }  
 
     public boolean updateGPA() //should this have return type double or bool
@@ -67,6 +69,19 @@ public class Student extends User
     public ArrayList<AdvisementPlan> getAdvisementPlans()
     {
         return null;
+    }
+
+    public ArrayList<UUID> getAdvisementPlanUUID()
+    {
+        //return this.advisementPlanUUIDs;
+        ArrayList<UUID> items = new ArrayList<>();
+        items.add(UUID.randomUUID());
+        return items;
+    }
+
+    public boolean fetchAdvisementPlans()
+    {
+        return false;
     }
 
     public void setAdvisementPlan() //should have params?

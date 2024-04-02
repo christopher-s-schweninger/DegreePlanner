@@ -10,6 +10,7 @@ import testClasses.ReadFile;
 import testClasses.WriteFile;
 import testClasses.User;
 import testClasses.DegreeList;
+import testClasses.UserList;
 
 import java.util.Random;
 
@@ -64,6 +65,23 @@ public class testFile {
             System.out.println("Write successful");
         else
             System.out.println("Write unsuccessful");
+        UserList userList = UserList.getInstance();
+        System.out.println("Attempting to write users");
+        if(WriteFile.writeUsers())
+            System.out.println("Write successful");
+        else
+            System.out.println("Write unsuccessful");
+        AdvisementPlanList planList = AdvisementPlanList.getInstance();
+        System.out.println("Attempting to write advisement plans");
+        if(WriteFile.writePlans())
+            System.out.println("write successful");
+        else
+            System.out.println("Write unsuccessful");
+        // System.out.println("Attempting to write degrees");
+        // if(WriteFile.writeDegreePlan())
+        //     System.out.println("Write successful");
+        // else
+        //     System.out.println("Write unsuccessful");
 
     }
 }

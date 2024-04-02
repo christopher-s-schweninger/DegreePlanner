@@ -71,6 +71,14 @@ public class Student extends User
         return null;
     }
 
+    public ArrayList<UUID> getAdvisementPlanUUID()
+    {
+        //return this.advisementPlanUUIDs;
+        ArrayList<UUID> items = new ArrayList<>();
+        items.add(UUID.randomUUID());
+        return items;
+    }
+
     public boolean fetchAdvisementPlans()
     {
         return false;

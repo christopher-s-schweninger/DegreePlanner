@@ -10,17 +10,41 @@ public class AdvisementPlan
     private UUID AdvisementPlanUUID;
     private User student;
     private User advisor;
-    //public ArrayList<Course> courses;
+    public ArrayList<Course> courses;
     public String notes;
 
-    public AdvisementPlan(UUID planID, UUID studentUUID, UUID advisorUUID, ArrayList<UUID> courses,String attachedNotes)
+    public AdvisementPlan(UUID planID, User student, User advisor, ArrayList<Course> courses, String attachedNotes)
     {
-
+        this.AdvisementPlanUUID = planID;
+        this.student = student;
+        this.advisor = advisor;
+        this.courses = courses;
+        this.notes = attachedNotes;
     }
 
-    public AdvisementPlan(UUID planID, UUID studentUUID, UUID advisorUUID, String attachedNotes)
+    public UUID getPlanID()
     {
+        return this.AdvisementPlanUUID;
+    }
 
+    public User getPlanStudent()
+    {
+        return this.student;
+    }
+
+    public User getPlanAdvisor()
+    {
+        return this.advisor;
+    }
+
+    public ArrayList<Course> getCourses()
+    {
+        return this.courses;
+    }
+
+    public String getNotes()
+    {
+        return this.notes;
     }
 
     public void renderListView(AdvisementPlanList advisementPlanList)
